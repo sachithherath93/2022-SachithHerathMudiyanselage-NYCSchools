@@ -29,7 +29,7 @@
 		19AB7E8728365438009F7A3E /* Collections in Frameworks */ = {isa = PBXBuildFile; productRef = 19AB7E8628365438009F7A3E /* Collections */; };
 		19AB7E8928365438009F7A3E /* DequeModule in Frameworks */ = {isa = PBXBuildFile; productRef = 19AB7E8828365438009F7A3E /* DequeModule */; };
 		19AB7E8B28365438009F7A3E /* OrderedCollections in Frameworks */ = {isa = PBXBuildFile; productRef = 19AB7E8A28365438009F7A3E /* OrderedCollections */; };
-		19AB7E8D2836571B009F7A3E /* Readme.md in Resources */ = {isa = PBXBuildFile; fileRef = 19AB7E8C2836571B009F7A3E /* Readme.md */; };
+		19AB7E8D2836571B009F7A3E /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 19AB7E8C2836571B009F7A3E /* README.md */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -73,7 +73,7 @@
 		19AB7E7A28357EF1009F7A3E /* DetailsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsViewModel.swift; sourceTree = "<group>"; };
 		19AB7E7D28359CCC009F7A3E /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
 		19AB7E832835E92F009F7A3E /* SchoolsConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SchoolsConstants.swift; sourceTree = "<group>"; };
-		19AB7E8C2836571B009F7A3E /* Readme.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = Readme.md; sourceTree = "<group>"; };
+		19AB7E8C2836571B009F7A3E /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -107,7 +107,7 @@
 		19AB7E2B2834B022009F7A3E = {
 			isa = PBXGroup;
 			children = (
-				19AB7E8C2836571B009F7A3E /* Readme.md */,
+				19AB7E8C2836571B009F7A3E /* README.md */,
 				19AB7E362834B022009F7A3E /* NYCSchools */,
 				19AB7E4D2834B028009F7A3E /* NYCSchoolsTests */,
 				19AB7E572834B028009F7A3E /* NYCSchoolsUITests */,
@@ -328,7 +328,7 @@
 			files = (
 				19AB7E442834B027009F7A3E /* LaunchScreen.storyboard in Resources */,
 				19AB7E412834B027009F7A3E /* Assets.xcassets in Resources */,
-				19AB7E8D2836571B009F7A3E /* Readme.md in Resources */,
+				19AB7E8D2836571B009F7A3E /* README.md in Resources */,
 				19AB7E3F2834B023009F7A3E /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

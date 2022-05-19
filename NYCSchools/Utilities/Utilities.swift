@@ -12,10 +12,10 @@ import UIKit
 extension String {
     // Unwanted character cleanup for some strings returned from the API
     func removeUnwantedCharacters() -> Self {
-        return self.replacingOccurrences(of:"[^a-z,. ^A-Z]", with: "", options: .regularExpression)
+        return self.replacingOccurrences(of:"[^a-z,. ^A-Z^0-9]", with: "", options: .regularExpression)
     }
     
-    func removeLetters() -> Self {
+    func removeNonNumeric() -> Self {
         return self.replacingOccurrences(of:"[^0-9.]", with: "", options: .regularExpression)
     }
 }

@@ -11,13 +11,10 @@ import UIKit
 
 class DetailsViewModel {
     unowned var coordinator: AppCoordinator
-    var school: School {
-        didSet {
-            populateSchoolInformation()
-        }
-    }
+    var school: School
     var satInfo: SchoolSAT? {
         didSet {
+            populateSchoolInformation()
             populateSATData()
         }
     }
@@ -39,7 +36,7 @@ class DetailsViewModel {
     
     func populateSchoolInformation() {
         var descriptionString = ""
-        descriptionString.append("Phone: \(school.phone?.removeLetters() ?? SchoolsConstants.ErrorMessage.notAvailable)\n")
+        descriptionString.append("Phone: \(school.phone?.removeNonNumeric() ?? SchoolsConstants.ErrorMessage.notAvailable)\n")
         descriptionString.append("Email: \(school.email ?? SchoolsConstants.ErrorMessage.notAvailable)\n")
         descriptionString.append("Website: \(school.website ?? SchoolsConstants.ErrorMessage.notAvailable)\n")
         descriptionString.append("Address Line 1: \(school.addressLineOne ?? SchoolsConstants.ErrorMessage.notAvailable)\n")
@@ -52,10 +49,10 @@ class DetailsViewModel {
         guard let satInfo = satInfo else { return }
         var descriptionString = ""
         
-        // from the ordered collections package
+        // from the ordered collections package/ dependency
         let satInfoDict: OrderedDictionary =
-        [SchoolsConstants.SATConstants.testTakers: satInfo.satTestTakers?.removeLetters(), SchoolsConstants.SATConstants.critical: satInfo.criticalReadingAvg?.removeLetters(), SchoolsConstants.SATConstants.math: satInfo.mathAvg?.removeLetters(),
-         SchoolsConstants.SATConstants.writing: satInfo.writingAvg?.removeLetters()]
+        [SchoolsConstants.SATConstants.testTakers: satInfo.satTestTakers?.removeNonNumeric(), SchoolsConstants.SATConstants.critical: satInfo.criticalReadingAvg?.removeNonNumeric(), SchoolsConstants.SATConstants.math: satInfo.mathAvg?.removeNonNumeric(),
+         SchoolsConstants.SATConstants.writing: satInfo.writingAvg?.removeNonNumeric()]
         
         for satInfo in satInfoDict {
             if let info = satInfo.value, !info.isEmpty {
