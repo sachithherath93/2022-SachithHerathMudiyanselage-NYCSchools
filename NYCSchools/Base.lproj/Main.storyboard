@@ -1,28 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="gcX-xh-a9Z">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="UAP-ET-ni6">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Navigation Controller-->
-        <scene sceneID="1qB-49-FkA">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="gcX-xh-a9Z" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="d5N-Vv-cnl">
-                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="bFK-bC-Mu1" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-17.39130434782609" y="43.526785714285715"/>
-        </scene>
         <!--SchoolDetailsViewController-->
         <scene sceneID="41j-yT-yqb">
             <objects>
@@ -35,7 +21,7 @@
                                 <rect key="frame" x="0.0" y="88" width="414" height="808"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3vL-qW-N82">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="228.5"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="223.5"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="School Name" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PV1-V4-TXH">
                                                 <rect key="frame" x="15" y="20" width="384" height="24"/>
@@ -43,7 +29,7 @@
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="School Description Not Available" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="P4z-AM-0jf">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="School Description Not Available" textAlignment="justified" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="P4z-AM-0jf">
                                                 <rect key="frame" x="15" y="59" width="384" height="20.5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
@@ -62,13 +48,13 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="SAT Information" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cSF-hx-LYL">
-                                                <rect key="frame" x="0.0" y="169" width="414" height="24"/>
+                                                <rect key="frame" x="0.0" y="164" width="414" height="24"/>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Not Available" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="I7c-s1-3De">
-                                                <rect key="frame" x="15" y="208" width="384" height="20.5"/>
+                                                <rect key="frame" x="15" y="203" width="384" height="20.5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -86,7 +72,7 @@
                                             <constraint firstAttribute="trailing" secondItem="XIU-3i-d9z" secondAttribute="trailing" id="LKg-XX-z6W"/>
                                             <constraint firstItem="cSF-hx-LYL" firstAttribute="leading" secondItem="3vL-qW-N82" secondAttribute="leading" id="Nb9-eP-HGP"/>
                                             <constraint firstItem="XIU-3i-d9z" firstAttribute="leading" secondItem="3vL-qW-N82" secondAttribute="leading" id="O9t-sc-QBi"/>
-                                            <constraint firstItem="cSF-hx-LYL" firstAttribute="top" secondItem="eco-j7-JcQ" secondAttribute="bottom" constant="15" id="TxF-eM-yF4"/>
+                                            <constraint firstItem="cSF-hx-LYL" firstAttribute="top" secondItem="eco-j7-JcQ" secondAttribute="bottom" constant="10" id="TxF-eM-yF4"/>
                                             <constraint firstItem="P4z-AM-0jf" firstAttribute="leading" secondItem="3vL-qW-N82" secondAttribute="leading" constant="15" id="aVW-Qk-0wY"/>
                                             <constraint firstItem="I7c-s1-3De" firstAttribute="top" secondItem="cSF-hx-LYL" secondAttribute="bottom" constant="15" id="hAh-bw-6xS"/>
                                             <constraint firstItem="PV1-V4-TXH" firstAttribute="top" secondItem="3vL-qW-N82" secondAttribute="top" constant="20" id="jxt-Ty-4XF"/>

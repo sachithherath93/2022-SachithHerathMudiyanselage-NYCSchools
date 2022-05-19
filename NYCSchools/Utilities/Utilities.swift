@@ -15,8 +15,23 @@ extension String {
         return self.replacingOccurrences(of:"[^a-z,. ^A-Z^0-9]", with: "", options: .regularExpression)
     }
     
+    func removeNoneEmail() -> Self {
+        return self.replacingOccurrences(of:"[^a-z^@^., -^A-Z^0-9]", with: "", options: .regularExpression)
+    }
+    
     func removeNonNumeric() -> Self {
         return self.replacingOccurrences(of:"[^0-9.]", with: "", options: .regularExpression)
+    }
+    
+    func removeNonPhoneNumber() -> Self {
+        return self.replacingOccurrences(of:"[^0-9 -]", with: "", options: .regularExpression)
+    }
+    
+    // Source - stackOverflow
+    func capitalizingFirstLetter() -> Self {
+        let first = self.prefix(1).capitalized
+        let other = self.dropFirst()
+        return first + other
     }
 }
 

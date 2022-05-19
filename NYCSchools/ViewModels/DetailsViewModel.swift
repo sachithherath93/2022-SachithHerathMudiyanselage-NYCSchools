@@ -11,6 +11,8 @@ import UIKit
 
 class DetailsViewModel {
     unowned var coordinator: AppCoordinator
+    var networkManager: ServiceProtocol
+    
     var school: School
     var satInfo: SchoolSAT? {
         didSet {
@@ -19,29 +21,39 @@ class DetailsViewModel {
         }
     }
 
-    // School info
     var name: String
     var description: String?
-    var satDescription: String? // SchoolsConstants.ErrorMessage.notAvailable
-    var schoolInformation: String? // SchoolsConstants.ErrorMessage.notAvailable
+    var satDescription: String?
+    var schoolInformation: String?
     
-    init(school: School, coordinator: AppCoordinator) {
+    init(coordinator: AppCoordinator, networkManager: ServiceProtocol, school: School) {
         self.coordinator = coordinator
+        self.networkManager = networkManager
         self.school = school
         self.name = school.schoolName.removeUnwantedCharacters().trimmingCharacters(in: .whitespacesAndNewlines)
         if let desc = school.description {
-            self.description = desc.removeUnwantedCharacters().trimmingCharacters(in: .whitespaces)
+            self.description = desc.removeUnwantedCharacters().trimmingCharacters(in: .whitespaces).capitalizingFirstLetter()
         }
     }
     
     func populateSchoolInformation() {
         var descriptionString = ""
-        descriptionString.append("Phone: \(school.phone?.removeNonNumeric() ?? SchoolsConstants.ErrorMessage.notAvailable)\n")
-        descriptionString.append("Email: \(school.email ?? SchoolsConstants.ErrorMessage.notAvailable)\n")
-        descriptionString.append("Website: \(school.website ?? SchoolsConstants.ErrorMessage.notAvailable)\n")
-        descriptionString.append("Address Line 1: \(school.addressLineOne ?? SchoolsConstants.ErrorMessage.notAvailable)\n")
-        descriptionString.append("City: \(school.city ?? SchoolsConstants.ErrorMessage.notAvailable)\n")
-        descriptionString.append("Zip: \(school.zip ?? SchoolsConstants.ErrorMessage.notAvailable)")
+        
+        // from the ordered collections package/ dependency
+        let schoolInfoDict: OrderedDictionary =
+        [SchoolsConstants.SchoolInfo.phone: school.phone?.removeNonPhoneNumber(), SchoolsConstants.SchoolInfo.email: school.email?.removeNoneEmail(), SchoolsConstants.SchoolInfo.website: school.website,
+         SchoolsConstants.SchoolInfo.addressLine1: school.addressLineOne,
+         SchoolsConstants.SchoolInfo.city: school.city?.removeUnwantedCharacters().capitalizingFirstLetter(),
+         // used the same as non phone number as zip also sometimes contains -
+         SchoolsConstants.SchoolInfo.zip: school.zip?.removeNonPhoneNumber()]
+        
+        for schoolInfo in schoolInfoDict {
+            if let info = schoolInfo.value, !info.isEmpty {
+                descriptionString.append("\(schoolInfo.key) \(info)\n")
+            } else {
+                descriptionString.append("\(schoolInfo.key) \(SchoolsConstants.ErrorMessage.notAvailable)\n")
+            }
+        }
         schoolInformation = descriptionString
     }
     
@@ -75,7 +87,7 @@ class DetailsViewModel {
 
 extension DetailsViewModel {
     func fetchSATDetails(onCompletion: @escaping ((SchoolAPIError?) -> Void)) {
-        NetworkManager().executeSchoolSATRequest(schoolId: school.id) { [weak self] infoArray, error in
+        networkManager.executeSchoolSATRequest(schoolId: school.id) { [weak self] infoArray, error in
             guard let self = self else { return }
             guard let infoArray = infoArray,
                     let satInfo = infoArray.first,

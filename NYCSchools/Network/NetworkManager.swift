@@ -30,7 +30,13 @@ enum SchoolAPIError: Error {
 typealias schoolListCompletion = ([School]?, SchoolAPIError?) -> Void
 typealias schoolSATCompletion = ([SchoolSAT]?, SchoolAPIError?) -> Void
 
-struct NetworkManager {
+// More testable and flexible with a protocol
+protocol ServiceProtocol: AnyObject {
+    func executeSchoolListRequest(completion: @escaping schoolListCompletion)
+    func executeSchoolSATRequest(schoolId: String, completion: @escaping schoolSATCompletion)
+}
+
+final class NetworkManager: ServiceProtocol {
     func executeSchoolListRequest(completion: @escaping schoolListCompletion) {
         guard let request = createRequest(urlString: "https://data.cityofnewyork.us/resource/s3k6-pzi2.json") else {
             completion(nil, .urlError)

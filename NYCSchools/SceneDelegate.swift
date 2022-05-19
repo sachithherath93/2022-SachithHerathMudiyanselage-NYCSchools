@@ -19,11 +19,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         guard let _ = (scene as? UIWindowScene) else { return }
         guard let windowScene = (scene as? UIWindowScene) else { return }
         let window = UIWindow(windowScene: windowScene)
-        let navigationController = UINavigationController()
-        window.rootViewController = navigationController
-        self.appCoordinator = AppCoordinator(navigationController: navigationController)
-        guard let appCoordinator = self.appCoordinator else { return }
-        appCoordinator.startCoordinator()
+        startCoordinator()
         self.window = window
         window.makeKeyAndVisible()
     }
@@ -48,11 +44,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     func sceneWillEnterForeground(_ scene: UIScene) {
         // Called as the scene transitions from the background to the foreground.
         // Use this method to undo the changes made on entering the background.
-        let navigationController = UINavigationController()
-        window?.rootViewController = navigationController
-        self.appCoordinator = AppCoordinator(navigationController: navigationController)
-        guard let appCoordinator = self.appCoordinator else { return }
-        appCoordinator.startCoordinator()
+        startCoordinator()
     }
 
     func sceneDidEnterBackground(_ scene: UIScene) {
@@ -60,6 +52,16 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // Use this method to save data, release shared resources, and store enough scene-specific state information
         // to restore the scene back to its current state.
         appCoordinator = nil
+    }
+    
+    private func startCoordinator() {
+        let navigationController = UINavigationController()
+        guard let window = window else { return }
+        window.rootViewController = navigationController
+        let networkManager = NetworkManager()
+        self.appCoordinator = AppCoordinator(navigationController: navigationController, networkManager: networkManager)
+        guard let appCoordinator = self.appCoordinator else { return }
+        appCoordinator.startCoordinator()
     }
 }
 

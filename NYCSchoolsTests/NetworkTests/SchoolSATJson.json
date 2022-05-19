@@ -1,0 +1,11 @@
+{
+    [
+        {
+            "dbn":"08X282",
+            "school_name":"WOMEN'S ACADEMY OF EXCELLENCE",
+            "num_of_sat_test_takers":"44",
+            "sat_critical_reading_avg_score":"407","sat_math_avg_score":"386",
+            "sat_writing_avg_score":"378"
+        }
+    ]
+}

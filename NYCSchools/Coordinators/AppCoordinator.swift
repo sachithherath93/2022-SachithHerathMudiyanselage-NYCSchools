@@ -26,14 +26,16 @@ final class AppCoordinator: Coordinator {
     var parent: Coordinator?
     var children: [Coordinator]?
     var navigationController: UINavigationController // root
+    let networkManager: ServiceProtocol
     
-    init(navigationController: UINavigationController) {
+    init(navigationController: UINavigationController, networkManager: ServiceProtocol) {
         self.navigationController = navigationController
+        self.networkManager = networkManager
     }
     
     func startCoordinator() {
         let schoolListVC = SchoolListViewController()
-        let viewModel = SchoolListViewModel(coordinator: self)
+        let viewModel = SchoolListViewModel(coordinator: self, networkManager: networkManager)
         schoolListVC.viewModel = viewModel
         self.navigationController.pushViewController(schoolListVC, animated: true)
     }
@@ -43,7 +45,7 @@ final class AppCoordinator: Coordinator {
             displayError(.other)
             return
         }
-        let viewModel = DetailsViewModel(school: school, coordinator: self)
+        let viewModel = DetailsViewModel(coordinator: self, networkManager: networkManager, school: school)
         detailsVC.viewModel = viewModel
         self.navigationController.pushViewController(detailsVC, animated: true)
     }
