@@ -6,12 +6,15 @@ The NYCSchools app gives a list of New York City high schools and information ab
 
 ## Tech Specs
 
+### Architecture Patterns
+* MVVM-Coordinator
+
 ### Package Dependencies
 * swift-collections
 
 ### APIs Utilized
-* [`GET` `List of NYC Schools`](https://data.cityofnewyork.us/resource/s3k6-pzi2.json)
-* [`GET` `SAT information for New York high schools`](https://data.cityofnewyork.us/resource/f9bf-2cp4.json?))
+* [`GET` `List of New York City high schools`](https://data.cityofnewyork.us/resource/s3k6-pzi2.json)
+* [`GET` `SAT information for New York City high schools`](https://data.cityofnewyork.us/resource/f9bf-2cp4.json?)
 
 ## Testing
 * Unit Test Coverage - 66.4%
