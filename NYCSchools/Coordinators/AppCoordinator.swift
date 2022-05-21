@@ -27,6 +27,9 @@ final class AppCoordinator: Coordinator {
     var children: [Coordinator]?
     var navigationController: UINavigationController // root
     let networkManager: ServiceProtocol
+    // Can be used in unit tests
+    var schoolListViewController: SchoolListViewController?
+    var detailsViewController: SchoolDetailsViewController?
     
     init(navigationController: UINavigationController, networkManager: ServiceProtocol) {
         self.navigationController = navigationController
@@ -37,6 +40,7 @@ final class AppCoordinator: Coordinator {
         let schoolListVC = SchoolListViewController()
         let viewModel = SchoolListViewModel(coordinator: self, networkManager: networkManager)
         schoolListVC.viewModel = viewModel
+        schoolListViewController = schoolListVC
         self.navigationController.pushViewController(schoolListVC, animated: true)
     }
     
@@ -47,6 +51,7 @@ final class AppCoordinator: Coordinator {
         }
         let viewModel = DetailsViewModel(coordinator: self, networkManager: networkManager, school: school)
         detailsVC.viewModel = viewModel
+        detailsViewController = detailsVC
         self.navigationController.pushViewController(detailsVC, animated: true)
     }
     

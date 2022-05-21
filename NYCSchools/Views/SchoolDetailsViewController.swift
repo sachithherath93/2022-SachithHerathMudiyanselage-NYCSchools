@@ -31,15 +31,15 @@ class SchoolDetailsViewController: UIViewController {
         navigationItem.hidesBackButton = true
         navigationItem.title = SchoolsConstants.Titles.details
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .close, target: self, action: #selector(closeVC))
-        for subView in mainView.subviews {
-            subView.isHidden = true
-        }
-        fetchRecipe()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        for subView in mainView.subviews {
+            subView.isHidden = true
+        }
         navigationController?.navigationBar.prefersLargeTitles = false
+        fetchSATDetails()
     }
 
     override func viewWillDisappear(_ animated: Bool) {
@@ -47,7 +47,7 @@ class SchoolDetailsViewController: UIViewController {
         navigationController?.navigationBar.prefersLargeTitles = true
     }
     
-    private func fetchRecipe() {
+    private func fetchSATDetails() {
         viewModel.fetchSATDetails { [unowned self] error in
             guard error == nil else {
                 DispatchQueue.main.async {

@@ -11,6 +11,11 @@ import UIKit
 class SchoolListViewController: UIViewController {
     var viewModel: SchoolListViewModel!
     var cellReuseId = "SchoolListCell"
+    var searchActive: Bool {
+        get {
+            searchController.isActive
+        } set {}
+    }
     
     lazy var searchController: UISearchController = {
         let controller = UISearchController(searchResultsController: nil)
@@ -79,7 +84,7 @@ class SchoolListViewController: UIViewController {
 
 extension SchoolListViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if searchController.isActive {
+        if searchActive {
             return viewModel.filteredSchoolList.count
         } else {
             return viewModel.sortedSchoolList.count
@@ -90,7 +95,7 @@ extension SchoolListViewController: UITableViewDataSource {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: cellReuseId, for: indexPath) as? SchoolListCell else {
             return UITableViewCell()
         }
-        let school = searchController.isActive ? viewModel.filteredSchoolList[indexPath.row] : viewModel.sortedSchoolList[indexPath.row]
+        let school = searchActive ? viewModel.filteredSchoolList[indexPath.row] : viewModel.sortedSchoolList[indexPath.row]
         cell.setUpCell(with: school)
         return cell
     }
@@ -99,7 +104,7 @@ extension SchoolListViewController: UITableViewDataSource {
 extension SchoolListViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        let school = searchController.isActive ? viewModel.filteredSchoolList[indexPath.row] : viewModel.sortedSchoolList[indexPath.row]
+        let school = searchActive ? viewModel.filteredSchoolList[indexPath.row] : viewModel.sortedSchoolList[indexPath.row]
         viewModel.showDetails(school)
     }
 }

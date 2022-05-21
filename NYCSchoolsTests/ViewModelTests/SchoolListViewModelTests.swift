@@ -63,6 +63,7 @@ class SchoolListViewModelTests: XCTestCase {
     override func tearDown() {
         self.viewModel = nil
         self.service = nil
+        self.coordinator = nil
         super.tearDown()
     }
 }
