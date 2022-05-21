@@ -1,3 +1,20 @@
+# NYC Schools
+## About
+### Description
 
-// Talk about some cases - strings had weird characters, had some not capitalized
-// min - ios 13
+The NYCSchools app gives a list of New York City high schools and information about them. The user gets shown a list of schools, and by tapping on a school, displays a decription of the school, its contact info and its SAT score information.
+
+## Tech Specs
+
+### Package Dependencies
+* swift-collections
+
+### APIs Utilized
+* [`GET` `List of NYC Schools`](https://data.cityofnewyork.us/resource/s3k6-pzi2.json)
+* [`GET` `SAT information for New York high schools`](https://data.cityofnewyork.us/resource/f9bf-2cp4.json?))
+
+## Testing
+* Unit Test Coverage - 66.4%
+
+## External Links
+* [GitHub Folder](https://github.com/sachithherath93/20220519-SachithHerathMudiyanselage-NYCSchools)
